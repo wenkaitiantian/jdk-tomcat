@@ -9,18 +9,18 @@ RUN mkdir /jdk
 ADD jdk  /jdk
 
 #创建tomcat目录
-#RUN mkdir /tomcat
+RUN mkdir /tomcat
 #把当前目录下的tomcat文件夹添加到镜像
-#ADD tomcat /tomcat
+ADD tomcat /tomcat
 
 #添加环境变量
 ENV JAVA_HOME /jdk
-#ENV CATALINA_HOME /tomcat
+ENV CATALINA_HOME /tomcat
 ENV PATH $PATH:$JAVA_HOME/bin
-#ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/bin
 
 #暴露8080端口
-#EXPOSE 8080
+EXPOSE 8080
 
 #启动时运行tomcat
-#CMD ["/tomcat/bin/catalina.sh","run"]
+CMD ["/tomcat/bin/catalina.sh","run"]
